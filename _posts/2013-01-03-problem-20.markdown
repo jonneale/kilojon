@@ -1,0 +1,11 @@
+---
+layout: post
+title: Project Euler Problem 20
+categories : [euler]
+---
+#Project Euler Problem 20
+
+`(defn number-to-digit-list
+  [n]
+  (map #(- (int %1) (int \0)) (str n)))
+  (reduce + (number-to-digit-list (reduce * (range 1 101))))`

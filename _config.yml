@@ -1,11 +1,11 @@
 # Site settings
-title: Your awesome title
+title: Kilojon - Jon Neale's Blog
 email: your-email@domain.com
-description: "Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description."
+description: "Jon Neale is an awesome developer who will solve all your technical problems, amaze you with his dashing good looks and lie to you in his blog description"
 baseurl: ""
-url: "http://yourdomain.com"
-twitter_username: jekyllrb
-github_username:  jekyll
+url: "http://kilojon.herokuapp.com"
+twitter_username: jon_neale
+github_username:  joneale
 
 # Build settings
 markdown: kramdown

@@ -1,0 +1,43 @@
+---
+layout: post
+title: Project Euler Problem 1
+categories : [euler]
+---
+#Project Euler Problem 1
+
+> "If we list all the natural numbers below 10 that are multiples of 3 or 5, we get 3, 5, 6 and 9. The sum of these multiples is 23.
+> Find the sum of all the multiples of 3 or 5 below 1000."
+
+This is a nice easy problem to get started with, and you could approach it in a couple of ways. You could either generate all of the numbers between 1 and 1,000, iterate over each one and check to see if it is a multiple of 3 or 5, and remove it if it is not, and then sum the remaining numbers.
+In ruby, that would look a bit like this:
+
+
+{% highlight ruby %}
+(1..999).select{|x| (x % 3 == 0) || (x % 5 == 0)}.inject{|agg,v| agg + v}
+{% endhighlight %}
+Or in Clojure:
+
+{% highlight clojure %}
+(reduce + (filter (fn [v] (or (= 0 (mod v 3)) (= 0 (mod v 5)))) (range 1 1000)))
+{% endhighlight %}
+
+Alternatively, you could generate all of the multiples of 3 and all of the multiples of 5, and merge them using a set operation to ensure uniqueness, summing the resultant set.
+Obviously this will be a quicker approach, as it involves fewer operations.
+
+In ruby, you could do this as follows:
+
+{% highlight ruby %}
+((0..999).step(3).to_a).concat((0..999).step(5).to_a).uniq.inject{|agg,k| agg+k}
+{% endhighlight %}
+
+Whereas, again, in Clojure that would look like:
+
+{% highlight clojure %}
+(reduce + (into (set (take-while (partial > 1000) (iterate (partial + 3) 0))) (set (take-while (partial > 1000) (iterate (partial + 5) 0)))))
+{% endhighlight %}
+
+Or slightly nicer, using the range function
+
+{% highlight clojure %}
+(reduce + (into (set (range 0 1000 3)) (set (range 0 1000 5))))
+{% endhighlight %}
